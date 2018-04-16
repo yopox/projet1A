@@ -1,5 +1,5 @@
 ---
-title: Cahier des charges - Projet de synthèse
+title: Réalisation d'une table d'arcade - Cahier des charges
 author: Castello Cyprien, Vignier Louis
 lang: FR
 institute: CentraleSupélec
