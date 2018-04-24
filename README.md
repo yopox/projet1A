@@ -9,6 +9,31 @@ Projet de première année (Supélec)
 
 ## Changelog
 
+### 24/04
+
+Réunion :
+
+- Prochaines étapes
+  - Alimentation de la table
+  - Identifier le matériel qui manque
+    - Plaques à essai vertes Supélec ?
+    - Petite connectique -> demander au technicien
+    - Farnell mieux pour commander -> idem
+    - Tableur de ce qu'il faut acheter
+  - Fil en nappe ? Contrôles
+- Livrables
+  - Tout ce que l'on produit doit être rédigé, document autoporteur
+  - Perspective d'ingénieur : continuité du projet
+    - Intro ac objectifs
+    - CCL : cahier des charges respecté ? évolutions
+  - Recherche documentaire : citer dans le compte-rendu
+  - Annexes
+- Penser le projet par étapes et évolutions futures
+- Soutenance
+  - Convaincre de l'intérêt du produit
+  - Expliquer les perspectives
+  - Démo
+
 ### 16/04
 
 Objectifs de la première phase du projet :
