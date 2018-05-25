@@ -9,6 +9,24 @@ Projet de première année (Supélec)
 
 ## Changelog
 
+### 25/05
+
+Seance de travail :
+
+- Connexion des cables a la table
+- Test de l'alimentation
+- Test de la librairie Python d'affichage
+- Tout marche !
+
+### 22/05
+
+- Suite de la seance du 18/05
+
+### 18/05
+
+- Reception du materiel electronique
+- Etude des documantations de la table / de la librairie Python
+
 ### 24/04
 
 Réunion :
