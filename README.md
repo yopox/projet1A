@@ -2,12 +2,28 @@
 
 Projet de première année (Supélec)
 
+## Lancer le jeu
+
+`python3 main.py --led-no-hardware-pulse 1`
+
 ## Matériel
 
 - Raspberry Pi 3 B+
 - [Matrice de LED 32x32 ADAFRUIT](https://www.adafruit.com/product/607)
 
 ## Changelog
+
+### 12/06
+
+Seance de travail :
+
+- Programmation du jeu en mode "auto"
+- Peinture du support
+- Redaction de la synthese
+
+### 09/06
+
+Decoupe du support pour pouvoir y mettre les boutons poussoirs.
 
 ### 25/05
 
