@@ -3,7 +3,7 @@ Fichier principal
 """
 
 import numpy as np
-import util
+from util import Util
 import player
 from timer import Timer
 from samplebase import SampleBase
@@ -29,21 +29,19 @@ class Snake(SampleBase):
 
         # Init tilemap
         self.tilemap = [[Tile(i, j) for j in range(32)] for i in range(32)]
-        self.players = [player.Player(10, 200, 10, 0, self.MAP),
-                        player.Player(200, 10, 10, 17, self.MAP)]
+        self.players = [player.Player(10, 200, 10, 0, self.tilemap),
+                        player.Player(200, 10, 10, 17, self.tilemap)]
         self.timer = Timer(6)
-        self.over = False
+        self.state = "GAME"
 
     def run(self):
         screen = self.matrix.CreateFrameCanvas()
 
-        while not self.over:
+        while Util.GAME_STATE == "GAME":
 
-            # Fake inputs
-            if np.random.randint(0, 5) == 0:
-                self.players[0].smartMove(self.tilemap)
-            if np.random.randint(0, 6) == 0:
-                self.players[1].smartMove(self.tilemap)
+            # Inputs
+            self.players[0].input(Util.P1_LEFT, Util.P1_RIGHT)
+            self.players[1].input(Util.P2_LEFT, Util.P2_RIGHT)
 
             # Update pos
             self.players[0].update(self.tilemap)

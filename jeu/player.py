@@ -9,11 +9,11 @@ class Player():
             [np.random.randint(0, 32), y_offset + np.random.randint(0, 15)])
         self.COLOR = [c1, c2, c3]
         tilemap[self.POS[0]][self.POS[1]].player = self
-        global DIRS
         self.DIR = Util.DIRS[np.random.randint(0, 4)]
         self.LAST = "BLOC"
+        self.TURNED_LAST = False
 
-    def update(self, tilemap, over):
+    def update(self, tilemap):
         self.POS += Util.MOVE[self.DIR]
         self.POS = self.POS % 32
         tile = tilemap[self.POS[0]][self.POS[1]]
@@ -31,15 +31,17 @@ class Player():
                 self.LAST = "NONE"
         # Non empty tile : GAME OVER
         else:
-            over = True
+            Util.GAME_STATE = "OVER"
 
-    def smartMove(self, tilemap):
-        intent = ""
-        if np.random.randint(0, 2) == 0:
-            intent = Util.LEFT[self.DIR]
+    def input(self, left, right):
+        if not self.TURNED_LAST:
+            if left.is_pressed and not right.is_pressed:
+                self.DIR = Util.LEFT[self.DIR]
+                self.LAST = "TURN"
+                self.TURNED_LAST = True
+            if right.is_pressed and not left.is_pressed:
+                self.DIR = Util.RIGHT[self.DIR]
+                self.LAST = "TURN"
+                self.TURNED_LAST = True
         else:
-            intent = Util.RIGHT[self.DIR]
-        newPos = (self.POS + Util.MOVE[intent]) % 32
-        if tilemap[newPos[0]][newPos[1]].player is None:
-            self.DIR = intent
-            self.LAST = "TURN"
+            self.TURNED_LAST = False
