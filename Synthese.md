@@ -6,14 +6,7 @@ institute: CentraleSupélec
 documentclass: report
 toc: false
 header-includes:
-    - \usepackage{fancyhdr}
-    - \pagestyle{fancy}
-    - \usepackage{booktabs}
-    - \usepackage{graphicx}
-    - \usepackage{sistyle}
-    - \usepackage[utf8]{inputenc} 
-    - \fancyhead[L]{\leftmark}
-    - \fancyhead[R]{Projet de synthèse}
+    - \input{common.tex}
 ---
 
 # Introduction
@@ -37,9 +30,31 @@ Ainsi, à mesure que la partie avance, la difficulté s’accroit du fait que le
 
 Cependant, la traînée n’est pas entièrement continue, des trous sont générés pour pouvoir éviter de se retrouver bloqué trop rapidement. Un joueur peut être dans l'un des 3 états suivants :
 
-- `BLOC` $\rightarrow$ Le joueur a laissé un bloc derrière lui à la frame précédente. Il en laisse un nouveau avec une probabilité $p_{BLOC}$
-- `NONE`
+- `BLOC` $\rightarrow$ Le joueur a laissé un bloc derrière lui à la frame précédente. Il en laisse un nouveau avec une probabilité $p_{BLOC}$.
+- `NONE` $\rightarrow$ Le joueur n'a pas laissé de bloc derrière lui à la frame précédente. Il n'en laisse toujours pas à cette frame avec une probabilité $p_{NONE}$.
 - `TURN` $\rightarrow$ Le joueur vient de tourner et laisse systématiquement un bloc derrière lui pour que le joueur sache où il se trouve. Il repasse ensuite dans l'état `BLOC`.
+
+On a le graphe d'états suivants :
+
+\begin{center}
+\begin{tikzpicture}[->, shorten >=1pt, node distance=3.5cm, on grid, >=stealth, initial text=, every state/.style={draw=blue!50, very thick, fill=blue!20}]
+
+  \node[state]   (e0)               {$BLOC$};
+  \node[state]   (e1) [right=of e0] {$NONE$};
+  \node[state]   (e2) [below=of e0] {$TURN$};
+
+  \path (e0) edge [loop above] node {$p_{BLOC}$} (e0)
+             edge [bend left] node [above] {$1 - p_{BLOC}$} (e1)
+        (e1) edge [bend left] node [below] {$1 - p_{NONE}$} (e0)
+        (e1) edge [loop right] node {$p_{NONE}$} (e1)
+        (e2) edge [bend left] node [left] {1} (e0);
+
+\end{tikzpicture}
+\end{center}
+
+Cette méthode permet de générer des trous de manière plus efficace qu'en donnant simplement une probabilité à chaque bloc de ne pas apparaître. En effet, on ajuste $p_{BLOC}$ pour qu'un trou n'apparaisse pas trop souvent, puis on ajuste $p_{NONE}$ pour que lorsqu'un trou commence, il fasse souvent deux cases. Le résultat est alors plus naturel.
+
+On a choisi $p_{BLOC} = 0.8$ et $p_{NONE} = 0.35$
 
 ## Méthodologie
 
