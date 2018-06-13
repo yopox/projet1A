@@ -19,18 +19,19 @@ class Player():
         tile = tilemap[self.POS[1]][self.POS[0]]
 
         # Empty tile : the player moves
-        if tile.player is None:
+        if tile.type == "EMPTY":
             t = self.LAST == "TURN"
             b = self.LAST == "BLOC" and np.random.randint(
                 0, 100) <= Util.P_BLOC
             n = self.LAST == "NONE" and np.random.randint(0, 100) > Util.P_NONE
             if t or b or n:
                 self.LAST = "BLOC"
-                tilemap[self.POS[1]][self.POS[0]].player = self
+                tile.type = "PLAYER"
+                tile.player = self
             else:
                 self.LAST = "NONE"
         # Non empty tile : GAME OVER
-        else:
+        elif tile.type == "PLAYER":
             Util.GAME_STATE = "OVER"
 
     def input(self, left, right):
