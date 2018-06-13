@@ -30,9 +30,27 @@ class Player():
                 tile.player = self
             else:
                 self.LAST = "NONE"
-        # Non empty tile : GAME OVER
+
+        elif tile.type == "ERASER":
+            for line in tilemap:
+                for tile2 in line:
+                    if tile2.type == "PLAYER" and tile2.player == self:
+                        tile2.type = "EMPTY"
+            tile.type = "PLAYER"
+            tile.player = self
+
+        elif tile.type == "BOMB":
+            for j in range(7):
+                for i in range(7):
+                    tilemap[(j - 3 + tile.y) % 32][(i - 3 + tile.x) % 32].type = "EMPTY"
+            self.LAST = "TURN"
+
+        # Solid tile : GAME OVER
         elif tile.type == "PLAYER":
-            Util.GAME_STATE = "OVER"
+            Util.GAME_STATE = "LOSE"
+            Util.WIN_COLOR = [210 - self.COLOR[0], 10, 210 - self.COLOR[2]]
+            Util.WIN_POS = [self.POS[0], self.POS[1]]
+            Util.TICK = -128
 
     def input(self, left, right):
         if not self.TURNED_LAST:
