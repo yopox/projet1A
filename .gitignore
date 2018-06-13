@@ -1,3 +1,7 @@
 
 *.pdf
 *.pyc
+
+__latexindent_temp.tex
+
+jeu/__pycache__
