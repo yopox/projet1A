@@ -29,7 +29,7 @@ class Snake(SampleBase):
 
         # Init tilemap
         self.tilemap = [[Tile(i, j) for j in range(32)] for i in range(32)]
-        self.players = [player.Player(10, 200, 10, 0, self.tilemap),
+        self.players = [player.Player(10, 10, 200, 0, self.tilemap),
                         player.Player(200, 10, 10, 17, self.tilemap)]
         self.timer = Timer(6)
         self.state = "GAME"

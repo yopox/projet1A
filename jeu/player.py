@@ -6,9 +6,9 @@ class Player():
 
     def __init__(self, c1, c2, c3, y_offset, tilemap):
         self.POS = np.array(
-            [np.random.randint(0, 32), y_offset + np.random.randint(0, 15)])
+            [16 - y_offset + np.random.randint(0, 16), np.random.randint(0, 32)])
         self.COLOR = [c1, c2, c3]
-        tilemap[self.POS[0]][self.POS[1]].player = self
+        tilemap[self.POS[1]][self.POS[0]].player = self
         self.DIR = Util.DIRS[np.random.randint(0, 4)]
         self.LAST = "BLOC"
         self.TURNED_LAST = False
@@ -16,7 +16,7 @@ class Player():
     def update(self, tilemap):
         self.POS += Util.MOVE[self.DIR]
         self.POS = self.POS % 32
-        tile = tilemap[self.POS[0]][self.POS[1]]
+        tile = tilemap[self.POS[1]][self.POS[0]]
 
         # Empty tile : the player moves
         if tile.player is None:
@@ -26,7 +26,7 @@ class Player():
             n = self.LAST == "NONE" and np.random.randint(0, 100) > Util.P_NONE
             if t or b or n:
                 self.LAST = "BLOC"
-                tilemap[self.POS[0]][self.POS[1]].player = self
+                tilemap[self.POS[1]][self.POS[0]].player = self
             else:
                 self.LAST = "NONE"
         # Non empty tile : GAME OVER
