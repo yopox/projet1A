@@ -76,9 +76,53 @@ On a choisi $p_{BLOC} = 0.8$ et $p_{NONE} = 0.35$
 
 ### Pour la matrice de LED
 
+#### Alimentation de la matrice
+
+Les branchements à effectuer sur la matrice de LED concernent soit son alimentation, soit l'affichage. Adafruit, le constructeur de la matrice fournit une documentation à ce sujet sur son site disponible à l'adresse suivante : 
+[https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/overview](https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/overview)
+
+L'ensemble des pixels allumés en blanc de la matrice peut consommer
+jusqu'à 4A. Pour une utilisation plus classique, la matrice consomme en
+moyenne 2A. On peut alimenter la matrice avec des courants plus grand (par
+exemple 10A), par contre il est très important de bien l'alimenter sous 5V. Nous avons donc opté pour alimentation 5V/4000mA.
+
+Au dos de la table, l'alimentation se fera au travers d'un connecteur de type
+Molex.
+
+![Alimentation au dos de la matrice\label{alim}](assets/Alim.jpg)
+
+On dispose du cable d'alimentation suivant :
+
+![Cable fournit pour alimenter la matrice\label{cable}](assets/Cable.jpg)
+
+Ce câble dispose de deux connecteurs de type Molex mais nous n'utiliserons qu'un seul des deux pour alimenter la matrice.
+
+Pour connecter l'autre extrémité du câble avec notre alimentation, nous utiliserons un adaptateur comme sur la photo suivante :
+
+![Adapteur cable/alimenation 5V\label{adapt}](assets/Solution_adafruit.jpg)
+
+#### Gestion de l'affichage
+
+Pour l'affichage, il faut connecter les pins de la raspberry Pi au connecteur de pins de la matrice de LED.
+
+Au dos de la matrice, il y a deux connecteurs de pin (INPUT à gauche,
+OUTPUT à droite). Nous n'utiliserons pas le connecteur OUTPUT qui sert
+dans les cas où l'on veut brancher plusieurs matrices de leds en parallèle.
+
+Un connecteur possède 16 pins qui devront être relié à la raspberry Pi. Sa disposition est la suivante :
+
+![Disposition des pins\label{pins}](assets/Disposition_pins.png)
+
+Librairie qui indique les connexions entre les pins de la matrice et ceux de la raspberry
+
+
 ### Pour la Raspberry Pi
 
 ## Conception de la table
+
+Pour réaliser notre table, nous sommes partis d'une cagette dont les dimensions permettaient de pouvoir y ajouter la matrice de LED et des boutons pour les deux joueurs. Nous avons ensuite percé cette table afin de pouvoir y intégrer les boutons poussoirs et faire passer les câbles nécessaires à l'alimentation et à l'affichage de la matrice de LED. Nous avons du souder les deux broches des boutons poussoirs à des fils pour pouvoir ensuite les connecter à la raspberry Pi. Une des broches du bouton poussoir est relié à un pin GND de la raspberry et l'autre à un pin normal.
+
+Pour rendre la table portative, nous y avons intégré un compartiment pour pouvoir y poser la raspberry Pi. Enfin, nous avons travaillé son esthétique en bouchant certains trous et en la peignant.
 
 ## Conception du jeu
 
