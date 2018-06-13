@@ -3,6 +3,7 @@ from gpiozero import Button
 
 
 class Util:
+    """Variables utilitaires."""
     DIRS = ['UP', 'RIGHT', 'DOWN', 'LEFT']
     MOVE = {"UP": np.array([0, -1]),
             "RIGHT": np.array([1, 0]),
