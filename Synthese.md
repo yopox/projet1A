@@ -98,7 +98,7 @@ Au dos de la matrice, il y a deux connecteurs de pin (INPUT à gauche,
 OUTPUT à droite). Nous n'utiliserons pas le connecteur OUTPUT qui sert
 dans les cas où l'on veut brancher plusieurs matrices de leds en parallèle.
 
-Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}, elle est annotée des numéros de pins de la Raspberry Pi auxquels les pins du connecteur devront être reliés.
+Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}, elle est annotée des numéros de pins de la Raspberry Pi (voir FIG. \ref{pinout}) auxquels les pins du connecteur devront être reliés.
 
 ![Disposition des pins\label{pins}](assets/Disposition_pins.png){ width=50% }
 
@@ -125,7 +125,7 @@ Le tableau suivant indique l'utilisations des pins de la Raspberry (numérotés 
 
 Pour réaliser notre table, nous sommes partis d'une cagette dont les dimensions permettaient de pouvoir y ajouter la matrice de LED et des boutons pour les deux joueurs. Nous avons ensuite percé cette table afin de pouvoir y intégrer les boutons poussoirs et faire passer les câbles nécessaires à l'alimentation et à l'affichage de la matrice de LED. Nous avons soudé les deux broches des boutons poussoirs à des fils pour pouvoir ensuite les connecter à la Raspberry Pi. Une des broches du bouton poussoir est relié à un pin GND de la Raspberry et l'autre à un pin normal.
 
-Pour rendre la table portative, nous y avons intégré un compartiment pour pouvoir y poser la Raspberry Pi. Enfin, nous avons travaillé son esthétique en bouchant certains trous et en la peignant.
+Pour pouvoir déplacer la table plus facilement, nous y avons intégré un compartiment pour pouvoir y poser la Raspberry Pi. Enfin, nous avons travaillé son esthétique en bouchant certains trous et en la peignant.
 
 ## Conception du jeu
 
