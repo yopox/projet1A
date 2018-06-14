@@ -246,7 +246,7 @@ Voici quelques pistes pour améliorer la table :
 
 - La rendre plus résistante, nous avons utilisé du carton assez fin
 - Travailler la position des câbles pour que cela soit plus propre
-- Retravailler la forme de la table pour que l'écran y soit intégré et non posé dessus
+- Retravailler la forme de la table pour pouvoir augementer le nombre de joeurs et faire en sorte que l'écran y soit intégré et non posé dessus 
 - Retravailler l'alimentation pour avoir un unique câble à brancher
 
 # Annexes
@@ -260,6 +260,10 @@ Nous avons eu l'idée de faire ce projet suite à un Tweet qui présentait une i
 Nous avons finalement choisi une matrice plus petite qui était moins chère, mais nous avons travaillé la forme du projet. Sur le Tweet, on ne voit pas comment le jeu est controllé par exemple.
 
 ## Autres implémentations du jeu
+
+![Version originale de Kurve sortie en 1995\label(kurve95)](assets/kurve.png){ width=75% }
+
+![Version récente et améliorée du jeu\label(kurve18)](assets/kurve2018.jpg){ width=75% }
 
 ## Code du jeu
 
