@@ -55,11 +55,9 @@ Nous avons choisi Raspbian comme système d'exploitation pour la Raspberry Pi. I
 
 ## Branchements
 
-### Pour la matrice de LED
+### Alimentation de la matrice LED
 
-#### Alimentation de la matrice
-
-Les branchements à effectuer sur la matrice de LED concernent soit son alimentation, soit l'affichage. Adafruit, le constructeur de la matrice fournit une documentation à ce sujet sur son site disponible à l'adresse suivante : 
+Les branchements à effectuer sur la matrice de LED concernent soit son alimentation, soit l'affichage. Adafruit, le constructeur de la matrice fournit une documentation à ce sujet sur son site disponible à l'adresse suivante :
 [https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/overview](https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/overview)
 
 L'ensemble des pixels allumés en blanc de la matrice peut consommer
@@ -68,48 +66,67 @@ moyenne 2A. On peut alimenter la matrice avec des courants plus grand (par
 exemple 10A), par contre il est très important de bien l'alimenter sous 5V. Nous avons donc opté pour alimentation 5V/4000mA.
 
 Au dos de la table, l'alimentation se fera au travers d'un connecteur de type
-Molex.
+Molex (FIG. \ref{alim}).
 
-![Alimentation au dos de la matrice\label{alim}](assets/Alim.jpg)
+![Alimentation au dos de la matrice\label{alim}](assets/Alim.jpg){ width=50% }
 
-On dispose du cable d'alimentation suivant :
+On dispose du cable d'alimentation présenté en FIG. \ref{cable}.
 
-![Cable fournit pour alimenter la matrice\label{cable}](assets/Cable.jpg)
+![Cable fourni pour alimenter la matrice\label{cable}](assets/Cable.jpg){ width=50% }
 
 Ce câble dispose de deux connecteurs de type Molex mais nous n'utiliserons qu'un seul des deux pour alimenter la matrice.
 
-Pour connecter l'autre extrémité du câble avec notre alimentation, nous utiliserons un adaptateur comme sur la photo suivante :
+Pour connecter l'autre extrémité du câble avec notre alimentation, nous utiliserons un adaptateur comme sur la FIG. \ref{adapt}.
 
-![Adapteur cable/alimenation 5V\label{adapt}](assets/Solution_adafruit.jpg)
+![Adapteur cable/alimenation 5V\label{adapt}](assets/Solution_adafruit.jpg){ width=60% }
 
-#### Gestion de l'affichage
+### Branchements entre la matrice LED et la Raspberry
 
-Pour l'affichage, il faut connecter les pins de la raspberry Pi au connecteur de pins de la matrice de LED.
+Pour l'affichage, il faut connecter les pins de la Raspberry Pi au connecteur de pins de la matrice de LED.
 
 Au dos de la matrice, il y a deux connecteurs de pin (INPUT à gauche,
 OUTPUT à droite). Nous n'utiliserons pas le connecteur OUTPUT qui sert
 dans les cas où l'on veut brancher plusieurs matrices de leds en parallèle.
 
-Un connecteur possède 16 pins qui devront être relié à la raspberry Pi. Sa disposition est la suivante :
+Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}.
 
-![Disposition des pins\label{pins}](assets/Disposition_pins.png)
+![Disposition des pins\label{pins}](assets/Disposition_pins.png){ width=50% }
 
-Librairie qui indique les connexions entre les pins de la matrice et ceux de la raspberry
+<!-- Librairie qui indique les connexions entre les pins de la matrice et ceux de la raspberry -->
 
-### Pour la Raspberry Pi
+### Branchements pour la Raspberry Pi
+
+Pour pouvoir utiliser la Raspberry Pi, il faut l'alimenter par le port micro USB. Nous utilisons un chargeur $\SI{5}{V}, \SI{3000}{mA}$ recommandé par le constructeur.
+
+La documentation des pins utilisables sur la Raspberry Pi est présentée en FIG. \ref{pinout}.
+
+![Pins utilisables sur la Raspberry Pi\label{pinout}](assets/pinout.png){ width=100% }
+
+Le tableau suivant indique l'utilisations des pins de la Raspberry (numérotés de 1 à 40 selon la FIG. \ref{pinout}).
+
+| Pin                                                  | Utilisation          |
+| ---------------------------------------------------- | -------------------- |
+| 6, 7, 11, 12, 13, 15, 16, 18, 19, 21, 22, 24, 23, 26 | Matrice LED          |
+| 35                                                   | Bouton Gauche J1     |
+| 40                                                   | Bouton Droite J1     |
+| 29                                                   | Bouton Gauche J2     |
+| 28                                                   | Bouton Droite J2     |
+| 25, 30, 34, 39                                       | GND pour les boutons |
 
 ## Conception de la table
 
-Pour réaliser notre table, nous sommes partis d'une cagette dont les dimensions permettaient de pouvoir y ajouter la matrice de LED et des boutons pour les deux joueurs. Nous avons ensuite percé cette table afin de pouvoir y intégrer les boutons poussoirs et faire passer les câbles nécessaires à l'alimentation et à l'affichage de la matrice de LED. Nous avons du souder les deux broches des boutons poussoirs à des fils pour pouvoir ensuite les connecter à la raspberry Pi. Une des broches du bouton poussoir est relié à un pin GND de la raspberry et l'autre à un pin normal.
+Pour réaliser notre table, nous sommes partis d'une cagette dont les dimensions permettaient de pouvoir y ajouter la matrice de LED et des boutons pour les deux joueurs. Nous avons ensuite percé cette table afin de pouvoir y intégrer les boutons poussoirs et faire passer les câbles nécessaires à l'alimentation et à l'affichage de la matrice de LED. Nous avons du souder les deux broches des boutons poussoirs à des fils pour pouvoir ensuite les connecter à la Raspberry Pi. Une des broches du bouton poussoir est relié à un pin GND de la raspberry et l'autre à un pin normal.
 
 Pour rendre la table portative, nous y avons intégré un compartiment pour pouvoir y poser la raspberry Pi. Enfin, nous avons travaillé son esthétique en bouchant certains trous et en la peignant.
 
 ## Conception du jeu
 
+Le code du jeu est présenté en annexe. Nous détaillons dans cette partie les principes importants du jeu.
+
 ### Vocabulaire
 
 - Frame : Désigne un état du jeu. Nous avons choisi une vitesse d'affichage de 5 frames par seconde pour le jeu et 20 pour les transitions.
-- Map : Zone de jeu de taille 32x32.
+- Map : Désigne la zone de jeu de taille 32x32.
 
 ### Librairies utilisées
 
@@ -202,7 +219,13 @@ Cependant, une telle solution ne serait pas forcément optimale car l’un des o
 
 # Annexes
 
-## Inspirations
+## Inspiration
+
+Nous avons eu l'idée de faire ce projet suite à un Tweet qui présentait une idée similaire : [https://twitter.com/shandiin/status/967583007463890944](https://twitter.com/shandiin/status/967583007463890944).
+
+![Inspiration pour le jeu par @lucentbeam_](assets/inspi.png){ width=75% }
+
+Nous avons finalement choisi une matrice plus petite qui était moins chère, mais nous avons travaillé la forme du projet. Sur le Tweet, on ne voit pas comment le jeu est controllé par exemple.
 
 ## Autres implémentations du jeu
 

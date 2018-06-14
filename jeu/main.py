@@ -117,8 +117,8 @@ class Snake(SampleBase):
                         x = np.random.randint(0, 32)
                         y = np.random.randint(0, 32)
 
-                    self.tilemap[y][x].type =
-                        Util.ITEMS[np.random.randint(0, len(Util.ITEMS))]
+                    self.tilemap[y][x].type = Util.ITEMS[np.random.randint(
+                        0, len(Util.ITEMS))]
 
                 # Attente avant la frame suivante
                 for i in range(4):
