@@ -1,6 +1,7 @@
 ﻿---
 title: Réalisation d'une table d'arcade - Synthèse
 author: Castello Cyprien, Vignier Louis
+date: 2017/2018, Séquence 4
 lang: FR
 institute: CentraleSupélec
 documentclass: report
