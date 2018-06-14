@@ -51,15 +51,17 @@ Nous avons choisi Raspbian comme système d'exploitation pour la Raspberry Pi. I
 # Respect du cahier des charges
 
 Les objectifs énoncés dans le cahier des charges ont été atteints.
+
 Nous avons réalisé une table de jeu fonctionelle pour deux joueurs.
 Chaque joueur dispose de deux boutons poussoirs pour controler ses mouvements dans le jeu.
 Les connexions entre les différents composants de la table fonctionnent.
 Enfin, nous avons également pu nous concentrer sur l'esthétique de la table.
 
-Cependant, nous avons évolué par rapport au cahier des charges sur deux points :
+Cependant, nous avons évolué par rapport au cahier des charges sur les points suivants :
 
 1. La carte Raspberry que nous avons utilisée n'est pas la Raspberry Pi modèle B comportant 26 pins I/O dont nous disposions initialement. En effet, nous ne sommes pas parvenus à la faire fonctionner. Nous avons donc décidé d'en acheter une nouvelle et avons opté pour la Raspberry Pi 3 modèle B+ qui composée de 40 pins I/O, ce qui nous offrait plus de possibilités (notamment pouvoir augmenter le nombre de joueurs de 2 à 4).
 2. Le programme python présent sur la carte se lance pas automatiquement au démarrage. Nous avons besoin de connecter un clavier d'ordinateur pour pouvoir entrer les identifiants nécessaires à la connexion au compte utilisateur, puis pour lancer le jeu avec les privilèges administrateurs.
+3. La portativité de la table est entravée par les deux alimentations, et le fait que le compartiment qui tient la Raspberry n'est pas extrêmenent solide lors du transport. Lorsque la table est posée cela ne pose pas de problème.
 
 # Conception
 
@@ -213,7 +215,13 @@ Nous avons ajouté deux objets à récupérer pour les joueurs :
 
 ## Conclusion sur le projet
 
-<!-- C'était bien etc -->
+Lors de la réalisation de ce projet, nous avons pu perfectionner nos méthodes de travail en groupe. Il était agréable de travailler sur ce projet puisque nous l'avions choisi, et nous avons apprécié voir le jeu "se construire" au fur et à mesure de l'avancée du projet.
+
+Les ressources mises à disposition par Adafruit et d'autres contributeurs nous ont permis d'avancer de manière efficace : nous n'avons pas eu de problèmes pour brancher les différents composants, ni pour l'utilisation de la matrice de LEDs depuis la Raspberry.
+
+Nous avons réussi à répondre aux éléments les plus importants de notre cahier des charges.
+
+Nous sommes satisfaits du projet car nous avons pu jouer au jeu tous les deux, puis avec d'autres amis.
 
 ## Évolutions futures
 
