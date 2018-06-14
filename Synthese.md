@@ -51,6 +51,13 @@ Nous avons choisi Raspbian comme système d'exploitation pour la Raspberry Pi. I
 
 <!-- Changement de Raspberry -->
 
+Les objectifs énoncés dans le cahier des charges ont été atteints. Nous avons réalisé une table de jeu fonctionelle pour deux joueurs. Chaque joueur dispose de deux boutons poussoirs pour controler ses mouvements dans le jeu. Les connexions entre les différents composants de la table fonctionnent. Enfin, nous avons également pu nous concentrer sur l'esthétique de la table.
+
+Cependant, nous avons évolué par rapport au cahier des charges sur deux points :
+
+1. La carte Raspberry que nous avons utilisé n'est pas la Raspberry Pi modèle B comportant 26 pins I/O dont nous disposions initialement. En effet, nous ne sommes pas parvenu à la faire fonctionner. Nous avons donc décidé d'en acheter une nouvelle et avons opté pour la Raspberry Pi 3 modèle B+ qui composée de 40 pins I/O, ce qui nous offrait plus de possibilités (notamment pouvoir augmenter le nombre de joueurs de 2 à 4).
+2. Le programme python présent sur la carte se lance pas automatiquement à son démarrage. Nous avons besoin d'y connecter un clavier d'ordinateur pour pouvoir entrer les identifiants nécessaires au démarrage de la carte.
+
 # Conception
 
 ## Branchements
@@ -190,13 +197,14 @@ Nous avons ajouté deux objets à récupérer pour les joueurs :
 
 ## Évolutions futures
 
-Le principal problème de notre système actuel concerne son alimentation. En effet, la table nécessite deux brancher deux blocs d’alimentation pour fonctionner. Cela est dû au fait que nous alimentons directement les deux composants qui ont besoin d’électricité. Pour pallier à ce problème, il faudrait concevoir un bloc d’alimentation unique capable d’alimenter chacun des composants selon les contraintes qui lui sont propres.
+Le principal problème de notre système actuel concerne son alimentation. En effet, la table nécessite de brancher deux blocs d’alimentation pour fonctionner. Cela est dû au fait que nous alimentons directement les deux composants qui ont besoin d’électricité. Pour pallier à ce problème, il faudrait concevoir un bloc d’alimentation unique capable d’alimenter chacun des composants selon les contraintes qui lui sont propres.
 
 Cependant, une telle solution ne serait pas forcément optimale car l’un des objectifs de notre projet était de pouvoir obtenir une table portative. Pour ce faire il faudrait envisager l’utilisation d’une batterie.
 
 <!-- Améliorations sur le jeu -->
 
 <!-- Améliorations sur la table -->
+Augmenter le nombre de joueurs.
 
 <!-- Augmentation du nombre de jeux -->
 
