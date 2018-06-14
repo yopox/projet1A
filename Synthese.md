@@ -32,6 +32,8 @@ Dans cette partie, nous allons présenter succintement les différents outils qu
 
 #### Matériel
 
+Pour effectuer les soudures entre les fils et les boutons poussoirs, nous avons utilisé une machine à souder disponible dans le local du club Comet. Par ailleurs, pour la confection de la table nous avons utilisé du matériel classique (cutter, règle, ciseaux...).
+
 #### Logiciels
 
 ##### GitHub
