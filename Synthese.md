@@ -48,16 +48,16 @@ Nous avons choisi Raspbian comme système d'exploitation pour la Raspberry Pi. I
 
 # Respect du cahier des charges
 
-<!-- Ce qui a été fait par rapport au document cahier des charges initial -->
-
-<!-- Changement de Raspberry -->
-
-Les objectifs énoncés dans le cahier des charges ont été atteints. Nous avons réalisé une table de jeu fonctionelle pour deux joueurs. Chaque joueur dispose de deux boutons poussoirs pour controler ses mouvements dans le jeu. Les connexions entre les différents composants de la table fonctionnent. Enfin, nous avons également pu nous concentrer sur l'esthétique de la table.
+Les objectifs énoncés dans le cahier des charges ont été atteints.
+Nous avons réalisé une table de jeu fonctionelle pour deux joueurs.
+Chaque joueur dispose de deux boutons poussoirs pour controler ses mouvements dans le jeu.
+Les connexions entre les différents composants de la table fonctionnent.
+Enfin, nous avons également pu nous concentrer sur l'esthétique de la table.
 
 Cependant, nous avons évolué par rapport au cahier des charges sur deux points :
 
-1. La carte Raspberry que nous avons utilisé n'est pas la Raspberry Pi modèle B comportant 26 pins I/O dont nous disposions initialement. En effet, nous ne sommes pas parvenu à la faire fonctionner. Nous avons donc décidé d'en acheter une nouvelle et avons opté pour la Raspberry Pi 3 modèle B+ qui composée de 40 pins I/O, ce qui nous offrait plus de possibilités (notamment pouvoir augmenter le nombre de joueurs de 2 à 4).
-2. Le programme python présent sur la carte se lance pas automatiquement à son démarrage. Nous avons besoin d'y connecter un clavier d'ordinateur pour pouvoir entrer les identifiants nécessaires au démarrage de la carte.
+1. La carte Raspberry que nous avons utilisée n'est pas la Raspberry Pi modèle B comportant 26 pins I/O dont nous disposions initialement. En effet, nous ne sommes pas parvenus à la faire fonctionner. Nous avons donc décidé d'en acheter une nouvelle et avons opté pour la Raspberry Pi 3 modèle B+ qui composée de 40 pins I/O, ce qui nous offrait plus de possibilités (notamment pouvoir augmenter le nombre de joueurs de 2 à 4).
+2. Le programme python présent sur la carte se lance pas automatiquement au démarrage. Nous avons besoin de connecter un clavier d'ordinateur pour pouvoir entrer les identifiants nécessaires à la connexion au compte utilisateur, puis pour lancer le jeu avec les privilèges administrateurs.
 
 # Conception
 
@@ -96,11 +96,9 @@ Au dos de la matrice, il y a deux connecteurs de pin (INPUT à gauche,
 OUTPUT à droite). Nous n'utiliserons pas le connecteur OUTPUT qui sert
 dans les cas où l'on veut brancher plusieurs matrices de leds en parallèle.
 
-Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}, elle est annotée des numéros de pins de la raspberry Pi auxquels les pins du connecteur devront être reliés.
+Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}, elle est annotée des numéros de pins de la Raspberry Pi auxquels les pins du connecteur devront être reliés.
 
 ![Disposition des pins\label{pins}](assets/Disposition_pins.png){ width=50% }
-
-<!-- Librairie qui indique les connexions entre les pins de la matrice et ceux de la raspberry -->
 
 ### Branchements pour la Raspberry Pi
 
@@ -115,19 +113,21 @@ Le tableau suivant indique l'utilisations des pins de la Raspberry (numérotés 
 | Pin                                                  | Utilisation          |
 | ---------------------------------------------------- | -------------------- |
 | 6, 7, 11, 12, 13, 15, 16, 18, 19, 21, 22, 24, 23, 26 | Matrice LED          |
-| 35                                                   | Bouton Gauche J1     |
-| 40                                                   | Bouton Droite J1     |
-| 29                                                   | Bouton Gauche J2     |
-| 28                                                   | Bouton Droite J2     |
+| 35                                                   | Bouton $G_1$         |
+| 40                                                   | Bouton $D_1$         |
+| 29                                                   | Bouton $G_2$         |
+| 28                                                   | Bouton $D_2$         |
 | 25, 30, 34, 39                                       | GND pour les boutons |
 
 ## Conception de la table
 
-Pour réaliser notre table, nous sommes partis d'une cagette dont les dimensions permettaient de pouvoir y ajouter la matrice de LED et des boutons pour les deux joueurs. Nous avons ensuite percé cette table afin de pouvoir y intégrer les boutons poussoirs et faire passer les câbles nécessaires à l'alimentation et à l'affichage de la matrice de LED. Nous avons du souder les deux broches des boutons poussoirs à des fils pour pouvoir ensuite les connecter à la Raspberry Pi. Une des broches du bouton poussoir est relié à un pin GND de la raspberry et l'autre à un pin normal.
+Pour réaliser notre table, nous sommes partis d'une cagette dont les dimensions permettaient de pouvoir y ajouter la matrice de LED et des boutons pour les deux joueurs. Nous avons ensuite percé cette table afin de pouvoir y intégrer les boutons poussoirs et faire passer les câbles nécessaires à l'alimentation et à l'affichage de la matrice de LED. Nous avons soudé les deux broches des boutons poussoirs à des fils pour pouvoir ensuite les connecter à la Raspberry Pi. Une des broches du bouton poussoir est relié à un pin GND de la Raspberry et l'autre à un pin normal.
 
-Pour rendre la table portative, nous y avons intégré un compartiment pour pouvoir y poser la raspberry Pi. Enfin, nous avons travaillé son esthétique en bouchant certains trous et en la peignant.
+Pour rendre la table portative, nous y avons intégré un compartiment pour pouvoir y poser la Raspberry Pi. Enfin, nous avons travaillé son esthétique en bouchant certains trous et en la peignant.
 
 ## Conception du jeu
+
+Nous avons utilisé Python 3.6.5 pour coder le jeu. On peut le lancer depuis la Raspberry Pi à l'aide de la commande `sudo python3 main.py --led-no-hardware-pulse 1`.
 
 Le code du jeu est présenté en annexe. Nous détaillons dans cette partie les principes importants du jeu.
 
@@ -215,16 +215,29 @@ Nous avons ajouté deux objets à récupérer pour les joueurs :
 
 ## Évolutions futures
 
+### Pour le jeu
+
+La programmation d'un jeu est finie uniquement lorsqu'on le décide : on peut toujours ajouter de nouvelles fonctionnalités ou perfectionner ce qui a été fait.
+
+De plus, on peut aisément télécharger des fichiers sur la Raspberry, on peut donc envisager la création de nouveaux jeux. En ce qui concerne le jeu que nous avons développé, nous pourrions l'améliorer de la manière suivante :
+
+- Travailler l'image en incluant plus d'effets visuels
+- Ajouter un mode solo où l'on joue contre l'ordinateur (on pourrait le démarrer en appuyant sur le bouton de droite)
+- Augmenter la vitesse de déplacement des serpents avec le temps
+- Ajouter un compteur de points pour faire des duels en plusieurs manches
+
+### Pour la table
+
 Le principal problème de notre système actuel concerne son alimentation. En effet, la table nécessite de brancher deux blocs d’alimentation pour fonctionner. Cela est dû au fait que nous alimentons directement les deux composants qui ont besoin d’électricité. Pour pallier à ce problème, il faudrait concevoir un bloc d’alimentation unique capable d’alimenter chacun des composants selon les contraintes qui lui sont propres.
 
 Cependant, une telle solution ne serait pas forcément optimale car l’un des objectifs de notre projet était de pouvoir obtenir une table portative. Pour ce faire il faudrait envisager l’utilisation d’une batterie.
 
-<!-- Améliorations sur le jeu -->
+Voici quelques pistes pour améliorer la table :
 
-<!-- Améliorations sur la table -->
-Augmenter le nombre de joueurs.
-
-<!-- Augmentation du nombre de jeux -->
+- La rendre plus résistante, nous avons utilisé du carton assez fin
+- Travailler la position des câbles pour que cela soit plus propre
+- Retravailler la forme de la table pour que l'écran y soit intégré et non posé dessus
+- Retravailler l'alimentation pour avoir un unique câble à brancher
 
 # Annexes
 
