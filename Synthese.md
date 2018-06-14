@@ -95,7 +95,7 @@ Au dos de la matrice, il y a deux connecteurs de pin (INPUT à gauche,
 OUTPUT à droite). Nous n'utiliserons pas le connecteur OUTPUT qui sert
 dans les cas où l'on veut brancher plusieurs matrices de leds en parallèle.
 
-Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}.
+Un connecteur possède 16 pins qui devront être reliés à la Raspberry Pi. Sa disposition est présentée en FIG. \ref{pins}, elle est annotée des numéros de pins de la raspberry Pi auxquels les pins du connecteur devront être reliés.
 
 ![Disposition des pins\label{pins}](assets/Disposition_pins.png){ width=50% }
 
