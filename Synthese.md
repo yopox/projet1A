@@ -53,15 +53,15 @@ Nous avons choisi Raspbian comme système d'exploitation pour la Raspberry Pi. I
 Les objectifs énoncés dans le cahier des charges ont été atteints.
 
 Nous avons réalisé une table de jeu fonctionelle pour deux joueurs.
-Chaque joueur dispose de deux boutons poussoirs pour controler ses mouvements dans le jeu.
+Chaque joueur dispose de deux boutons poussoirs pour contrôler ses mouvements dans le jeu.
 Les connexions entre les différents composants de la table fonctionnent.
 Enfin, nous avons également pu nous concentrer sur l'esthétique de la table.
 
 Cependant, nous avons évolué par rapport au cahier des charges sur les points suivants :
 
 1. La carte Raspberry que nous avons utilisée n'est pas la Raspberry Pi modèle B comportant 26 pins I/O dont nous disposions initialement. En effet, nous ne sommes pas parvenus à la faire fonctionner. Nous avons donc décidé d'en acheter une nouvelle et avons opté pour la Raspberry Pi 3 modèle B+ qui composée de 40 pins I/O, ce qui nous offrait plus de possibilités (notamment pouvoir augmenter le nombre de joueurs de 2 à 4).
-2. Le programme python présent sur la carte se lance pas automatiquement au démarrage. Nous avons besoin de connecter un clavier d'ordinateur pour pouvoir entrer les identifiants nécessaires à la connexion au compte utilisateur, puis pour lancer le jeu avec les privilèges administrateurs.
-3. La portativité de la table est entravée par les deux alimentations, et le fait que le compartiment qui tient la Raspberry n'est pas extrêmenent solide lors du transport. Lorsque la table est posée cela ne pose pas de problème.
+2. Le programme Python présent sur la carte se lance pas automatiquement au démarrage. Nous avons besoin de connecter un clavier d'ordinateur pour pouvoir entrer les identifiants nécessaires à la connexion au compte utilisateur, puis pour lancer le jeu avec les privilèges administrateurs.
+3. La portabilité de la table est entravée par les deux alimentations, et le fait que le compartiment qui tient la Raspberry n'est pas extrêmenent solide lors du transport. Lorsque la table est posée cela ne pose pas de problème.
 
 # Conception
 
@@ -74,7 +74,7 @@ Les branchements à effectuer sur la matrice de LED concernent soit son alimenta
 
 L'ensemble des pixels allumés en blanc de la matrice peut consommer
 jusqu'à 4A. Pour une utilisation plus classique, la matrice consomme en
-moyenne 2A. On peut alimenter la matrice avec des courants plus grand (par
+moyenne 2A. On peut alimenter la matrice avec des courants plus grands (par
 exemple 10A), par contre il est très important de bien l'alimenter sous 5V. Nous avons donc opté pour alimentation 5V/4000mA.
 
 Au dos de la table, l'alimentation se fera au travers d'un connecteur de type
@@ -261,9 +261,11 @@ Nous avons finalement choisi une matrice plus petite qui était moins chère, ma
 
 ## Autres implémentations du jeu
 
-![Version originale de Kurve sortie en 1995\label(kurve95)](assets/kurve.png){ width=75% }
+On présente ici deux implémentations du jeu "Achtung Die Kurve", une sortie en 1995, et une plus récente, sortie en 2017.
 
-![Version récente et améliorée du jeu\label(kurve18)](assets/kurve2018.jpg){ width=75% }
+![Version originale de Kurve sortie en 1995](assets/kurve.png){ width=75% }
+
+![Version récente et améliorée du jeu](assets/kurve2018.jpg){ width=75% }
 
 ## Code du jeu
 
