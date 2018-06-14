@@ -16,7 +16,7 @@ header-includes:
 
 ### Concept
 
-Notre projet consiste en la réalisation d’une table de jeu de type arcade. Cette table permet à deux joueurs de s’affronter sur un jeu dans lequel chacun des joueurs contrôle un serpent (constitué d’une trainée de points) et doit obliger son adversaire à entrer en collision avec un serpent.
+Notre projet consiste en la réalisation d’une table de jeu de type arcade. Cette table permet à deux joueurs de s’affronter sur un jeu dans lequel chacun des joueurs contrôle un serpent (constitué d’une trainée de points) et doit obliger son adversaire à entrer en collision avec son propre serpent ou celui de son adversaire.
 
 Ce jeu est connu sous le nom de « Achtung die Kurve ! » sorti initialement en 1995. Il a fait l’objet de nombreuses reprises depuis sa sortie et nous proposons de créer une nouvelle façon originale de jouer à ce jeu. L’utilisation d’une table à part entière offre plus de confort aux joueurs car les contrôles sont de vrais boutons au lieu de touches de clavier et les joueurs auront plus d’espace que s’ils devaient s’entasser à plusieurs autour d’un clavier d’ordinateur. De plus, la matrice de leds utilisée pour l’affichage permet d’obtenir un rendu graphique plus attrayant que celui d’un écran d’ordinateur.
 
