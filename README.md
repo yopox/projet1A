@@ -1,6 +1,10 @@
 # projet1A
 
-Projet de première année (Supélec)
+![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg) ![Raspberry PI](https://img.shields.io/badge/platform-Raspberry%20PI-lightgrey.svg)
+
+<div style="width: 640px; margin: auto;"><img src="assets/table.jpg"></img></div>
+
+Projet de première année (Supélec) : réalisation d'une table de jeu (matrice de LEDs, raspberry pi).
 
 ## Lancer le jeu
 
