@@ -2,7 +2,7 @@
 
 ![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg) ![Raspberry PI](https://img.shields.io/badge/platform-Raspberry%20PI-lightgrey.svg)
 
-<div style="width: 320px; margin: auto; padding: 32px 0;"><img src="assets/table.jpg"></img></div>
+<div style="width: 320px; margin: auto; padding: 32px 0;"><img src="assets/table.jpg" style="width: 320px"></img></div>
 
 Projet de première année (Supélec) : réalisation d'une table de jeu (matrice de LEDs, raspberry pi).
 
